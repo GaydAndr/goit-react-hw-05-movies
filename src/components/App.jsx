@@ -13,7 +13,7 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainWrapper />}>
+        <Route path="/goit-react-hw-05-movies/" element={<MainWrapper />}>
           <Route
             index
             element={
@@ -23,7 +23,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/movies"
+            path="/goit-react-hw-05-movies/movies"
             element={
               <Suspense fallback={<h2>Loading ...</h2>}>
                 <MovieSearch />
@@ -31,7 +31,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/movies/:movieId"
+            path="/goit-react-hw-05-movies/movies/:movieId"
             element={
               <Suspense fallback={<h2>Loading ...</h2>}>
                 <MovieDetails />
@@ -70,5 +70,3 @@ export const App = () => {
     </>
   );
 };
-
-// "homepage": "https://GaydAndr.github.io/goit-react-hw-05-movies/",

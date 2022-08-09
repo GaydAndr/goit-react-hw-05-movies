@@ -5,7 +5,10 @@ export const GoBackButton = () => {
   const location = useLocation();
 
   return (
-    <Button to={location?.state?.from ?? '/'} type="button">
+    <Button
+      to={location?.state?.from ?? '/goit-react-hw-05-movies/'}
+      type="button"
+    >
       ⇐
     </Button>
   );
