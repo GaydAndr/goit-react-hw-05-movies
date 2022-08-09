@@ -1,16 +1,74 @@
+import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { MainWrapper } from './MainWrapper/mainWrapper';
+
+const MovieSearch = lazy(() => import('pages/MovieSearch'));
+const Home = lazy(() => import('pages/Home'));
+const MovieDetails = lazy(() => import('pages/MovieDetails'));
+const Cast = lazy(() => import('components/Cast'));
+const Review = lazy(() => import('components/Review'));
+const NotFound = lazy(() => import('pages/NotFound'));
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<MainWrapper />}>
+          <Route
+            index
+            element={
+              <Suspense fallback={<h2>Loading ...</h2>}>
+                <Home />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/movies"
+            element={
+              <Suspense fallback={<h2>Loading ...</h2>}>
+                <MovieSearch />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/movies/:movieId"
+            element={
+              <Suspense fallback={<h2>Loading ...</h2>}>
+                <MovieDetails />
+              </Suspense>
+            }
+          >
+            <Route
+              path="cast"
+              element={
+                <Suspense fallback={<h2>Loading ...</h2>}>
+                  <Cast />
+                </Suspense>
+              }
+            />
+            <Route
+              path="reviews"
+              element={
+                <Suspense fallback={<h2>Loading ...</h2>}>
+                  <Review />
+                </Suspense>
+              }
+            />
+          </Route>
+        </Route>
+
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<h2>Loading ...</h2>}>
+              {/* <Review /> */}
+              <NotFound />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </>
   );
 };
+
+// "homepage": "https://GaydAndr.github.io/goit-react-hw-05-movies/",
