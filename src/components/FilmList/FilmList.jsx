@@ -38,7 +38,7 @@ FilmList.propTypes = {
       title: PropTypes.string,
       id: PropTypes.number.isRequired,
       name: PropTypes.string,
-      poster_path: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
     })
   ),
 };
